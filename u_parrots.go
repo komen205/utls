@@ -1024,7 +1024,16 @@ func utlsIdToSpec(id ClientHelloID) (ClientHelloSpec, error) {
 				&ApplicationSettingsExtensionNew{SupportedProtocols: []string{"h2"}},
 				BoringGREASEECH(),
 				&UtlsGREASEExtension{},
-				&UtlsPreSharedKeyExtension{},
+				&FakePreSharedKeyExtension{
+					Identities: []PskIdentity{{
+						Label:               []byte("test-session-ticket"),
+						ObfuscatedTicketAge: 12345,
+					}},
+					Binders: [][]byte{
+						make([]byte, 32), // 32-byte binder for SHA256
+					},
+					OmitEmptyPsk: false,
+				},
 			}),
 		}, nil
 	case HelloChrome_138_TEST:
