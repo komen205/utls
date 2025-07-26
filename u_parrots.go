@@ -1052,7 +1052,6 @@ func utlsIdToSpec(id ClientHelloID) (ClientHelloSpec, error) {
 				0x00, // compressionNone
 			},
 			Extensions: ShuffleChromeTLSExtensions([]TLSExtension{
-				&UtlsGREASEExtension{},
 				&SNIExtension{},
 				&ExtendedMasterSecretExtension{},
 				&RenegotiationInfoExtension{Renegotiation: RenegotiateOnceAsClient},
@@ -1064,8 +1063,6 @@ func utlsIdToSpec(id ClientHelloID) (ClientHelloSpec, error) {
 				&SupportedPointsExtension{SupportedPoints: []byte{
 					0x00,
 				}},
-				&ALPNExtension{AlpnProtocols: []string{"h2", "http/1.1"}},
-				&StatusRequestExtension{},
 				&SignatureAlgorithmsExtension{SupportedSignatureAlgorithms: []SignatureScheme{
 					ECDSAWithP256AndSHA256,
 					PSSWithSHA256,
@@ -1079,6 +1076,7 @@ func utlsIdToSpec(id ClientHelloID) (ClientHelloSpec, error) {
 				&KeyShareExtension{[]KeyShare{
 					{Group: X25519},
 				}},
+				&SessionTicketExtension{},
 				&PSKKeyExchangeModesExtension{[]uint8{
 					PskModeDHE,
 				}},
@@ -1088,11 +1086,6 @@ func utlsIdToSpec(id ClientHelloID) (ClientHelloSpec, error) {
 					VersionTLS11,
 					VersionTLS10,
 				}},
-				&UtlsCompressCertExtension{[]CertCompressionAlgo{
-					CertCompressionBrotli,
-				}},
-				&ApplicationSettingsExtensionNew{SupportedProtocols: []string{"h2"}},
-				BoringGREASEECH(),
 			}),
 		}, nil
 	case HelloFirefox_55, HelloFirefox_56:
