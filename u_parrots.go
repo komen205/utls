@@ -1036,7 +1036,7 @@ func utlsIdToSpec(id ClientHelloID) (ClientHelloSpec, error) {
 				},
 			}),
 		}, nil
-	case HelloChrome_138_TEST:
+	case PROXYMAN:
 		return ClientHelloSpec{
 			CipherSuites: []uint16{
 				TLS_AES_128_GCM_SHA256,
@@ -1060,7 +1060,7 @@ func utlsIdToSpec(id ClientHelloID) (ClientHelloSpec, error) {
 			CompressionMethods: []byte{
 				0x00, // compressionNone
 			},
-			Extensions: ShuffleChromeTLSExtensions([]TLSExtension{
+			Extensions: ([]TLSExtension{
 				&SNIExtension{},
 				&ExtendedMasterSecretExtension{},
 				&RenegotiationInfoExtension{Renegotiation: RenegotiateOnceAsClient},
