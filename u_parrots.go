@@ -1036,7 +1036,7 @@ func utlsIdToSpec(id ClientHelloID) (ClientHelloSpec, error) {
 				},
 			}),
 		}, nil
-	case HelloProxyman:
+	case HelloProxyman_52100:
 		return ClientHelloSpec{
 			CipherSuites: []uint16{
 				TLS_AES_128_GCM_SHA256,
