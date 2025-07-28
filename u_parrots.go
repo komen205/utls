@@ -1036,7 +1036,7 @@ func utlsIdToSpec(id ClientHelloID) (ClientHelloSpec, error) {
 				},
 			}),
 		}, nil
-	case HelloPROXYMAN:
+	case HelloProxyman:
 		return ClientHelloSpec{
 			CipherSuites: []uint16{
 				TLS_AES_128_GCM_SHA256,
@@ -1072,6 +1072,7 @@ func utlsIdToSpec(id ClientHelloID) (ClientHelloSpec, error) {
 				&SupportedPointsExtension{SupportedPoints: []byte{
 					0x00,
 				}},
+				&SessionTicketExtension{},
 				&SignatureAlgorithmsExtension{SupportedSignatureAlgorithms: []SignatureScheme{
 					ECDSAWithP256AndSHA256,
 					PSSWithSHA256,
@@ -1086,7 +1087,6 @@ func utlsIdToSpec(id ClientHelloID) (ClientHelloSpec, error) {
 				&KeyShareExtension{[]KeyShare{
 					{Group: X25519},
 				}},
-				&SessionTicketExtension{},
 				&PSKKeyExchangeModesExtension{[]uint8{
 					PskModeDHE,
 				}},

@@ -647,8 +647,8 @@ var (
 	// Chrome w/ New ALPS codepoint
 	HelloChrome_138 = ClientHelloID{helloChrome, "138", nil, nil}
 
-	HelloPROXYMAN = ClientHelloID{helloChrome, "PROXYMAN", nil, nil}
-	
+	HelloProxyman = ClientHelloID{helloChrome, "PROXYMAN", nil, nil}
+
 	HelloIOS_Auto = HelloIOS_14
 	HelloIOS_11_1 = ClientHelloID{helloIOS, "111", nil, nil} // legacy "111" means 11.1
 	HelloIOS_12_1 = ClientHelloID{helloIOS, "12.1", nil, nil}
