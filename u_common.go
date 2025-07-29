@@ -176,6 +176,7 @@ const (
 	helloSafari           = "Safari"
 	hello360              = "360Browser"
 	helloQQ               = "QQBrowser"
+	helloProxyman         = "Proxyman"
 
 	// versions
 	helloAutoVers = "0"
@@ -644,6 +645,9 @@ var (
 	HelloChrome_131 = ClientHelloID{helloChrome, "131", nil, nil}
 	// Chrome w/ New ALPS codepoint
 	HelloChrome_133 = ClientHelloID{helloChrome, "133", nil, nil}
+
+	//MacOS Proxyman Version 5.21.0
+	HelloProxyman_52100 = ClientHelloID{helloProxyman, "52100", nil, nil}
 
 	HelloIOS_Auto = HelloIOS_14
 	HelloIOS_11_1 = ClientHelloID{helloIOS, "111", nil, nil} // legacy "111" means 11.1
